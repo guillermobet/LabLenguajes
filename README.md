@@ -1,0 +1,3 @@
+> ghci
+...
+Prelude> :l Functions.hs
