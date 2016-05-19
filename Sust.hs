@@ -4,7 +4,7 @@ module Sust where
 
 import Term
 
-class Sust s where
+class Show s => Sust s where
 	sust :: s -> Term -> Term
 	sust s (Or x y) = Or (sust s x) (sust s y)
 	sust s (And x y) = And (sust s x) (sust s y)
@@ -57,11 +57,18 @@ instance Sust (Term, Term, (Term, Term), Term, Term) where
 	sust (a, b, (c, Var d), Var e, Var f) T = T
 	sust (a, b, (c, Var d), Var e, Var f) F = F
 
---instance Show (Sust s) where show = showSust s
+--instance Show (Sust (Term,Term)) where 
+--	show (a,b) = "asdsd"
 
 --showSust :: Sust s => s -> String
---showSust (a, b) =  "(" ++ showTerm a " =: " ++ showTerm b ")"
+--showSust (a,b) = "gok"
+
+--showSust :: (Term) -> String
+
+--showSust (a, b) =  "(" ++ showTerm a ++ " =: " ++ showTerm b ++ ")"
 --showSust (a, x, b) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
 --showSust (a, b, x, c, d) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
 
 --(p \/ q =: p)
+
+

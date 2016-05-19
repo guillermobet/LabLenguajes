@@ -14,8 +14,8 @@ infixl 0 ===
 showEquation :: Equation -> String
 showEquation (Equa expL expR) = "\t" ++ (showTerm expL) ++ "\n === \n\t" ++ (showTerm expR)
 
---firstTerm :: Equation -> Term
---firstTerm (Equa t1 t2) = t1
+firstTerm :: Equation -> Term
+firstTerm (Equa t1 t2) = t1
 
---secondTerm :: Equation -> Term
---secondTerm (Equa t1 t2) = t2
+secondTerm :: Equation -> Term
+secondTerm (Equa t1 t2) = t2

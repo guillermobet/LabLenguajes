@@ -5,6 +5,8 @@ import Sust
 import Term
 import Theorems
 
+data Void = With | Using | Lambda
+
 instantiate :: Sust s => Equation -> s -> Equation
 instantiate (Equa expL expR) s = (Equa (sust s expL) (sust s expR))
 
@@ -16,25 +18,25 @@ infer n s (Var z) expr = leibniz (instantiate (prop n) s) expr (Var z)
 
 step :: Sust s => Term -> Float -> s -> Term -> Term -> Term
 step t n s (Var z) expr
-						| t == leftTerm = rightTerm--(infer n s (Var z) expr) = secondTerm (infer n s (Var z) expr)
-						| t == rightTerm = leftTerm--(infer n s (Var z) expr) = firstTerm (infer n s (Var z) expr)
+						| t == leftTerm = rightTerm
+						| t == rightTerm = leftTerm
 						| otherwise = error "Couldn't match expression E depending on variable z"
 						where (Equa leftTerm rightTerm) = infer n s (Var z) expr
 
-with :: String
-with = "with"
+with :: Void
+with = With
 
-using :: String
-using = "using"
+using :: Void
+using = Using
 
-lambda :: String
-lambda = "lambda"
+lambda :: Void
+lambda = Lambda
 
 ---------------------------------------------------
 
-statement :: Sust s => Float -> String -> s -> String -> String -> Term -> Term -> Term -> IO Term
-statement n _ s _ _ (Var z) expr ioTerm = let x = step ioTerm n s (Var z) expr in
+statement :: Sust s => Float -> Void -> s -> Void -> Void -> Term -> Term -> Term -> IO Term
+statement n _ s _ _ (Var z) expr ioTerm = let x = (step ioTerm n s (Var z) expr) in
 											do
-												putStrLn $ "=== <statement " ++ show n ++ " with " ++ showSust s ++ " using lambda " ++ [z] ++ " . " ++ showTerm expr ++ ">"
+												putStrLn $ "=== < statement " ++ show n ++ " with (" ++ show s ++ ") using lambda " ++ [z] ++ " . " ++ showTerm expr ++ " >"
 												putStrLn $ show x
 												return x

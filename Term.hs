@@ -9,7 +9,7 @@ data Term =   Var Char
 			| Impl Term Term
 			| Equiv Term Term
 			| Nequiv Term Term
-			deriving (Eq)
+			deriving Eq
 
 -----------------------------------------------------------
 
