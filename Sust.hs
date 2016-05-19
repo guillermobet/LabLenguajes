@@ -56,3 +56,12 @@ instance Sust (Term, Term, (Term, Term), Term, Term) where
 	sust (a, b, (c, Var d), Var e, Var f) (Nequiv g h) = Nequiv (sust (a, b, (c, Var d), Var e, Var f) g) (sust (a, b, (c, Var d), Var e, Var f) h)
 	sust (a, b, (c, Var d), Var e, Var f) T = T
 	sust (a, b, (c, Var d), Var e, Var f) F = F
+
+--instance Show (Sust s) where show = showSust s
+
+--showSust :: Sust s => s -> String
+--showSust (a, b) =  "(" ++ showTerm a " =: " ++ showTerm b ")"
+--showSust (a, x, b) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
+--showSust (a, b, x, c, d) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
+
+--(p \/ q =: p)

@@ -1,4 +1,4 @@
---{-# LANGUAGE DataKinds #-}
+--{-# LANGUAGE DataKinds #-}<
 
 import Equation
 import Sust
@@ -30,5 +30,11 @@ using = "using"
 lambda :: String
 lambda = "lambda"
 
---statement :: String -> Float -> String -> Sust -> String -> String -> Term -> Term -> String
---statement
+---------------------------------------------------
+
+statement :: Sust s => Float -> String -> s -> String -> String -> Term -> Term -> Term -> IO Term
+statement n _ s _ _ (Var z) expr ioTerm = let x = step ioTerm n s (Var z) expr in
+											do
+												putStrLn $ "=== <statement " ++ show n ++ " with " ++ showSust s ++ " using lambda " ++ [z] ++ " . " ++ showTerm expr ++ ">"
+												putStrLn $ show x
+												return x
