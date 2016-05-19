@@ -1,5 +1,3 @@
---{-# LANGUAGE FlexibleInstances #-}
-
 module Theorems where
 
 import Term

@@ -9,7 +9,7 @@ data Term =   Var Char
 			| Impl Term Term
 			| Equiv Term Term
 			| Nequiv Term Term
-			--deriving (Eq)
+			deriving (Eq)
 
 -----------------------------------------------------------
 
@@ -69,6 +69,8 @@ infixl 1 <==>
 infixl 1 !<==>
 
 -----------------------------------------------------------
+
+-- Arreglar lo de true, false y not!!
 
 instance Show Term where show = showTerm
 
