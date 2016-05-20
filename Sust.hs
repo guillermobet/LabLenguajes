@@ -14,6 +14,7 @@ class Show s => Sust s where
 
 (=:) :: Term -> Term -> (Term, Term)
 (=:) a b = (a,b)
+infix 0 =:
 
 instance Sust (Term, Term) where
 	sust (a, Var b) (Var c)
