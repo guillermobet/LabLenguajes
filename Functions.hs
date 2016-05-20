@@ -15,6 +15,8 @@ using = Using
 lambda :: Void
 lambda = Lambda
 
+-----------------------------------------------------------
+
 instantiate :: Sust s => Equation -> s -> Equation
 instantiate (Equa expL expR) s = (Equa (sust s expL) (sust s expR))
 
