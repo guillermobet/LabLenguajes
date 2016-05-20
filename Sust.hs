@@ -57,27 +57,11 @@ instance Sust (Term, Term, (Term, Term), Term, Term) where
 	sust (a, b, (c, Var d), Var e, Var f) T = T
 	sust (a, b, (c, Var d), Var e, Var f) F = F
 
-
 instance Show (Term, Term) where 
 	show (a,b) = show a ++ " := " ++ show b
-
 
 instance Show (Term, (Term, Term), Term) where 
 	show (a,x,b) = show a ++ ", " ++ show x ++ ", " ++ show b
 
 instance Show (Term, Term, (Term, Term), Term, Term) where 
 	show (a,b,x,c,d) = show a ++ ","++ show b ++ "," ++ show x ++ "," ++ show c ++ "," ++ show d
-	
---showSust :: Sust s => s -> String
---showSust (a,b) = "gok"
-
---showSust :: (Term) -> String
-
---showSust (a, b) =  "(" ++ showTerm a ++ " =: " ++ showTerm b ++ ")"
---showSust (a, x, b) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
---showSust (a, b, x, c, d) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
-
---(p \/ q =: p)
-
-
---statement 3.2 with (x =: p) using lambda z (z) (x <==> q)
