@@ -76,8 +76,6 @@ infixl 1 ===
 
 -----------------------------------------------------------
 
--- Arreglar lo de true, false y not!!
-
 instance Show Term where show = showTerm
 
 showTerm :: Term -> String
