@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleInstances, OverlappingInstances #-}
 
 module Sust where
 
@@ -57,18 +57,10 @@ instance Sust (Term, Term, (Term, Term), Term, Term) where
 	sust (a, b, (c, Var d), Var e, Var f) T = T
 	sust (a, b, (c, Var d), Var e, Var f) F = F
 
---instance Show (Sust (Term,Term)) where 
---	show (a,b) = "asdsd"
+-----------------------------------------------------------
 
---showSust :: Sust s => s -> String
---showSust (a,b) = "gok"
+instance Show (Term, Term) where show (a, b) = show a ++ " =: " ++ show b
 
---showSust :: (Term) -> String
+instance Show (Term, (Term, Term), Term) where show (a, x, b) = show a ++ ", " ++ show x ++ ", " ++ show b
 
---showSust (a, b) =  "(" ++ showTerm a ++ " =: " ++ showTerm b ++ ")"
---showSust (a, x, b) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
---showSust (a, b, x, c, d) =  "(" ++ show a ++ ", " ++ show x ++ ", " ++ show b ++ ")"
-
---(p \/ q =: p)
-
-
+instance Show (Term, Term, (Term, Term), Term, Term) where show (a, b, x, c, d) = show a ++ ", " ++ show (b, x, c) ++ ", " ++ show d
