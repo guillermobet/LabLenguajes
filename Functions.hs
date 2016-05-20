@@ -6,6 +6,15 @@ import Theorems
 
 data Void = With | Using | Lambda
 
+with :: Void
+with = With
+
+using :: Void
+using = Using
+
+lambda :: Void
+lambda = Lambda
+
 instantiate :: Sust s => Equation -> s -> Equation
 instantiate (Equa expL expR) s = (Equa (sust s expL) (sust s expR))
 
@@ -21,15 +30,6 @@ step t n s (Var z) expr
 						| t == rightTerm = leftTerm
 						| otherwise = error "Invalid inference rule"
 						where (Equa leftTerm rightTerm) = infer n s (Var z) expr
-
-with :: Void
-with = With
-
-using :: Void
-using = Using
-
-lambda :: Void
-lambda = Lambda
 
 statement :: Sust s => Float -> Void -> s -> Void -> Void -> Term -> Term -> Term -> IO Term
 statement n _ s _ _ (Var z) expr ioTerm = let x = (step ioTerm n s (Var z) expr) in
