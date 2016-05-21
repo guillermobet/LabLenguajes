@@ -1,6 +1,6 @@
 module Theorems where
 
-import Term (Term, (===), (<==>), (!<==>), (\/), neg, true, false, p, q, r, Equation)
+import Term (Term, (===), (<==>), (==>),(!<==>), (\/), neg, true, false, p, q, r, Equation)
 
 prop :: Float -> Equation
 prop num
