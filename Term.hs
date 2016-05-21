@@ -9,7 +9,9 @@ data Term =   Var Char
 			| Impl Term Term
 			| Equiv Term Term
 			| Nequiv Term Term
-			deriving Eq
+			deriving (Eq)
+
+data Equation = Equa Term Term deriving (Eq)
 
 -----------------------------------------------------------
 
@@ -62,15 +64,17 @@ neg p = Not p
 (!<==>) :: Term -> Term -> Term
 (!<==>) p q = Nequiv p q
 
-infixl 3 \/
-infixl 3 /\
-infixr 2 ==>
-infixl 1 <==>
-infixl 1 !<==>
+(===) :: Term -> Term -> Equation
+(===) = Equa
+
+infixl 4 \/
+infixl 4 /\
+infixr 3 ==>
+infixl 2 <==>
+infixl 2 !<==>
+infixl 1 ===
 
 -----------------------------------------------------------
-
--- Arreglar lo de true, false y not!!
 
 instance Show Term where show = showTerm
 
